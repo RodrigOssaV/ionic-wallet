@@ -15,13 +15,35 @@ export class ConnectService {
   private url = environment.url;
 
   getAllServices(): Observable<any> {
-    return this.http.get<any>(this.url + '/service/get-services')/* .pipe(
+    return this.http.get<any>(this.url + '/service/get-services').pipe(
       catchError((error: any) => {
         // Aquí puedes realizar el manejo del error
         console.error('Ocurrió un error en la API:', error);
         // Puedes relanzar el error si deseas que el componente consumidor lo maneje también
         return throwError(() => error);
       })
-    ); */
+    );
+  }
+
+  getAllOwnChecks(): Observable<any> {
+    return this.http.get<any>(this.url + '/owncheck/get-all-owncheck').pipe(
+      catchError((error: any) => {
+        // Aquí puedes realizar el manejo del error
+        console.error('Ocurrió un error en la API:', error);
+        // Puedes relanzar el error si deseas que el componente consumidor lo maneje también
+        return throwError(() => error);
+      })
+    );
+  }
+
+  sendDataCheck(data: any): Observable<any> {
+    return this.http.post<any>(this.url + '/check/add-checks', data).pipe(
+      catchError((error: any) => {
+        // Aquí puedes realizar el manejo del error
+        console.error('Ocurrió un error en la API:', error);
+        // Puedes relanzar el error si deseas que el componente consumidor lo maneje también
+        return throwError(() => error);
+      })
+    );
   }
 }

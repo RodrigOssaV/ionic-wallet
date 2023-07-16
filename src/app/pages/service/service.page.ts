@@ -17,7 +17,7 @@ export class ServicePage implements OnInit {
 
   ionViewDidEnter(){
     //console.log("ionViewDidEnter service.page");
-    this.ShowServicesComponent.getServices();
+    this.ShowServicesComponent.getAllServices();
   }
 
 }

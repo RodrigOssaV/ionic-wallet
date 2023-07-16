@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/check/check.module').then( m => m.CheckPageModule)
   },
   {
+    path: 'personal-check',
+    loadChildren: () => import('./pages/personal-check/personal-check.module').then( m => m.PersonalCheckPageModule)
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'

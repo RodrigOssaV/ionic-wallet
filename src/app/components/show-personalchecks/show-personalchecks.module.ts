@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
-import { AddChecksComponent } from './add-checks.component';
-import { FormChecksModule } from '../form-checks/form-checks.module';
+import { ShowPersonalchecksComponent } from './show-personalchecks.component';
 
 
 @NgModule({
@@ -12,9 +11,8 @@ import { FormChecksModule } from '../form-checks/form-checks.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    FormChecksModule
   ],
-  declarations: [AddChecksComponent],
-  exports: [AddChecksComponent]
+  declarations: [ShowPersonalchecksComponent],
+  exports: [ShowPersonalchecksComponent]
 })
-export class AddChecksModule {}
+export class ShowPersonalchecksModule {}

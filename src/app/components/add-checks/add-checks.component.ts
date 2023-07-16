@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-add-checks',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddChecksComponent  implements OnInit {
 
-  constructor() { }
+  isModalOpen = false; // set modal
+
+  constructor(
+    public globalService: GlobalService
+  ) { }
 
   ngOnInit() {}
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 
 }
