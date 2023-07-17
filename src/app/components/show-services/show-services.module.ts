@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ShowServicesComponent } from './show-services.component';
 import { ShowPersonalchecksModule } from '../show-personalchecks/show-personalchecks.module';
+import { ItemServiceModule } from '../item-service/item-service.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ShowPersonalchecksModule } from '../show-personalchecks/show-personalch
     CommonModule,
     FormsModule,
     IonicModule,
-    ShowPersonalchecksModule
+    ShowPersonalchecksModule,
+    ItemServiceModule
   ],
   declarations: [ShowServicesComponent],
   exports: [ShowServicesComponent]

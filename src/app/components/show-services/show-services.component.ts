@@ -17,6 +17,8 @@ export class ShowServicesComponent  implements OnInit {
   //services: any[] = [];
   //array_service: any[] = [];
 
+  service: any;
+
   constructor(
     private apiService: ConnectService,
     public globalService: GlobalService
@@ -92,4 +94,10 @@ export class ShowServicesComponent  implements OnInit {
     });
     //console.log(this.services);
   }
+
+  async handleSelectedItemService(data: any){
+    let item = data;
+    await this.globalService.handleSendDataService(item);
+  }
+
 }

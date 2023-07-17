@@ -91,7 +91,7 @@ export class FormChecksComponent  implements OnInit {
       this.globalService.amount_services = length_more_checks;
       //console.log('more_checks: ', this.more_checks);
       this.globalService.amount_services = 0;
-      await this.globalService.handleDendDataCheck(this.more_checks);
+      await this.globalService.handleSendDataCheck(this.more_checks);
       await this.cleanInputs();
       this.fx_closeModal.emit();
     } else {
@@ -99,7 +99,7 @@ export class FormChecksComponent  implements OnInit {
 
       this.more_checks = [];
       this.globalService.amount_services = 0;
-      await this.globalService.handleDendDataCheck(this.check);
+      await this.globalService.handleSendDataCheck(this.check);
       await this.cleanInputs();
       this.fx_closeModal.emit();
     }

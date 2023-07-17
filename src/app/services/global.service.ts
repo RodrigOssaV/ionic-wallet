@@ -10,7 +10,9 @@ import { ToastService } from './toast.service';
 export class GlobalService {
 
   showService: ShowServices = new ShowServices();
+
   sendDataCheck: Subscription | undefined;
+  sendDataServiceByName: Subscription | undefined;
 
   services: any[] = [];
   array_service: any[] = [];
@@ -20,6 +22,11 @@ export class GlobalService {
   array_ownchecks: any[] = [];
 
   array: any;
+
+  isModalItemOpen = false;
+  data_Servicesmonthly: any;
+
+  show_nameModal: string = '';
 
   constructor(
     private apiService: ConnectService,
@@ -31,7 +38,7 @@ export class GlobalService {
     this.array_service = [];
   }
 
-  async handleDendDataCheck(data: any){
+  async handleSendDataCheck(data: any){
 
     let check = data;
     //console.log(check);
@@ -57,6 +64,34 @@ export class GlobalService {
       error: async (err) => {
         //console.log(err);
         this.sendDataCheck?.unsubscribe();
+      }
+    });
+  }
+
+  setOpenModalItem(isOpen: boolean){
+    this.isModalItemOpen = isOpen;
+  }
+
+  async handleSendDataService(data: any) {
+    //console.log(data);
+    let to_search_name = data.service_name;
+    this.show_nameModal = to_search_name;
+    //console.log(to_search_name);
+    let query= {
+      to_search_name
+    }
+    //console.log(query);
+    this.sendDataServiceByName = this.apiService.getDataServiceByName(query).subscribe({
+      next: async (resp) => {
+        //console.log(resp);
+        const response = await resp;
+        this.data_Servicesmonthly = response.data.rows;
+        this.setOpenModalItem(true);
+        this.sendDataServiceByName?.unsubscribe();
+      },
+      error: async (err) => {
+        console.log(err);
+        this.sendDataServiceByName?.unsubscribe();
       }
     });
   }
