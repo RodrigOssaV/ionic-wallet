@@ -1,4 +1,4 @@
-<ion-button (click)="setOpen(true)">+ pago</ion-button>
+<ion-button (click)="setOpen(true)">+ consumo</ion-button>
 
 <ion-modal [isOpen]="isModalOpen">
   <ng-template>
@@ -6,12 +6,13 @@
       <ion-toolbar>
         <ion-item lines="none">
           <ion-badge slot="end">{{globalService.amount_services}}</ion-badge>
-          <ion-label>Pagos</ion-label>
+          <ion-label>Consumo</ion-label>
         </ion-item>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <app-form-checks (fx_closeModal)="setOpen(false)"></app-form-checks>
+      <!-- <app-form-checks (fx_closeModal)="setOpen(false)"></app-form-checks> -->
+      <app-form-consumption (fx_closeModal)="setOpen(false)"></app-form-consumption>
     </ion-content>
   </ng-template>
 </ion-modal>

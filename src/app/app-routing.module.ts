@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/personal-check/personal-check.module').then( m => m.PersonalCheckPageModule)
   },
   {
+    path: 'consumption',
+    loadChildren: () => import('./pages/consumption/consumption.module').then( m => m.ConsumptionPageModule)
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'

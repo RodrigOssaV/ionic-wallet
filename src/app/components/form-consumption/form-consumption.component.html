@@ -1,0 +1,35 @@
+<ion-item class="input-form-check">
+  <ion-select label="Mes" label-placement="floating" (ionChange)="handleSelectMonth($event)" value="{{check.check_month}}">
+    <ion-select-option *ngFor="let month of all_months" [value]="month.name">{{ month.name }}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item class="input-form-check">
+  <ion-select label="Servicio" label-placement="floating" (ionChange)="handleSelectService($event)" value="{{check.check_service}}" [disabled]="block_selectService">
+    <ion-select-option *ngFor="let service of all_services" [value]="service.service_name">{{ service.service_name }}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item class="input-form-check">
+  <ion-select label="Personal" label-placement="floating" [disabled]="block_selectOwnCheck" (ionChange)="handleSelectOwnCheck($event)" value="{{check.check_owncheck}}">
+    <ion-select-option *ngFor="let owncheck of all_ownchecks" [value]="owncheck.owncheck_name">{{ owncheck.owncheck_name }}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item class="input-form-check">
+  <ion-input label="Valor" labelPlacement="floating" (input)="handleInputCLP($event)" value="{{show_value}}"></ion-input>
+</ion-item>
+
+<ion-grid>
+  <ion-row>
+    <ion-col size="8" class="ion-no-padding">
+      <ion-button color="success" expand="block" (click)="handleBtnSubmitOneService()">Agregar</ion-button>
+    </ion-col>
+    <ion-col size="4" class="ion-no-padding">
+      <ion-button color="tertiary" expand="block" (click)="handleBtnSubmitMoreServices()">Otro</ion-button>
+    </ion-col>
+    <ion-col size="12" class="ion-no-padding">
+      <ion-button color="danger" expand="block" (click)="handleCloseModal()">Cerrar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
