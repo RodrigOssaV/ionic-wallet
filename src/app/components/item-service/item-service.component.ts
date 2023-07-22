@@ -21,7 +21,7 @@ export class ItemServiceComponent  implements OnInit {
     //const ctx = document.getElementById('myChart');
     const ctx = <HTMLCanvasElement>document.getElementById(`myChart`);
     new Chart(ctx, {
-      type: 'doughnut',
+      type: 'bar',
       data, /* {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         datasets: [{
@@ -60,7 +60,7 @@ export class ItemServiceComponent  implements OnInit {
       labels: this.setLabels,
       datasets: [{
         //axis: 'y',
-        //label: 'My First Dataset',
+        label: 'Consumo',
         data: this.setData,
         fill: false,
         /* backgroundColor: [

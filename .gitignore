@@ -7,6 +7,7 @@ node_modules/
 .angular/
 android/
 .vscode/
+www/
 
 # Other files and folders
 .settings/
