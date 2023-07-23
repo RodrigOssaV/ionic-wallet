@@ -1,0 +1,27 @@
+<ion-item class="input-form-check">
+  <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="service.service_name"></ion-input>
+</ion-item>
+
+<ion-item class="input-form-check">
+  <ion-input label="N° cuenta" labelPlacement="floating" [(ngModel)]="service.service_nro_client"></ion-input>
+</ion-item>
+
+<ion-item class="input-form-check">
+  <ion-select label="Tipo" label-placement="floating" (ionChange)="handleSelectedTypeService($event)" value="{{service.service_type}}">
+    <ion-select-option *ngFor="let type of all_types" [value]="type.name_type">{{ type.name_type | uppercase }}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-grid>
+  <ion-row>
+    <ion-col size="8" class="ion-no-padding" (click)="handleBtnSubmitOneService()">
+      <ion-button color="success" expand="block">Agregar</ion-button>
+    </ion-col>
+    <ion-col size="4" class="ion-no-padding" (click)="handleBtnSubmitMoreServices()">
+      <ion-button color="tertiary" expand="block">Otro</ion-button>
+    </ion-col>
+    <ion-col size="12" class="ion-no-padding">
+      <ion-button color="danger" expand="block" (click)="handleCloseModal()">Cerrar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

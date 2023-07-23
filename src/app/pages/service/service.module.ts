@@ -8,6 +8,7 @@ import { ServicePageRoutingModule } from './service-routing.module';
 
 import { ServicePage } from './service.page';
 import { ShowServicesModule } from 'src/app/components/show-services/show-services.module';
+import { AddServicesModule } from 'src/app/components/add-services/add-services.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ShowServicesModule } from 'src/app/components/show-services/show-servic
     FormsModule,
     IonicModule,
     ServicePageRoutingModule,
-    ShowServicesModule
+    ShowServicesModule,
+    AddServicesModule
   ],
   declarations: [ServicePage]
 })

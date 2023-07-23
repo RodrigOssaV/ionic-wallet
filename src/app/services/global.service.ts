@@ -14,18 +14,22 @@ export class GlobalService {
   sendDataCheck: Subscription | undefined;
   sendDataServiceByName: Subscription | undefined;
   sendDataWallet: Subscription | undefined;
+  sendDataService: Subscription | undefined;
 
   wallets: any[] = [];
   set_dataWallet: any;
 
-  services: any[] = [];
-  array_service: any[] = [];
-  amount_services: number = 0;
+  services: any[] = []; //consumption
+  array_service: any[] = []; //consumption
+  amount_services: number = 0; //consumption
+
+  count_services: number = 0; //services ex: agua, luz, gas
 
   ownchecks: any[] = [];
   array_ownchecks: any[] = [];
 
   array: any;
+  array_services: any;
 
   isModalItemOpen = false;
   isModalWalletOpen = false;
@@ -89,6 +93,22 @@ export class GlobalService {
     });
   }
 
+  async handleSendDataServicesToBack(data: any){
+    let services = data;
+    console.log(services);
+    let length = services.length;
+    if(length === undefined || length === null){
+      //console.log('one');
+      //this.array_services = [data];
+      await this.apiServiceOneService(services);
+    } else {
+      //console.log('more than one: ', length);
+      this.array_services = {data};
+      await this.apiServiceMoreServices(data);
+    }
+    //console.log(this.array_services);
+  }
+
   setOpenModalItem(isOpen: boolean){
     this.isModalItemOpen = isOpen;
   }
@@ -117,6 +137,32 @@ export class GlobalService {
       error: async (err) => {
         console.log(err);
         this.sendDataServiceByName?.unsubscribe();
+      }
+    });
+  }
+
+  async apiServiceOneService(data: any){
+    this.sendDataService = this.apiService.sendDataOneService(data).subscribe({
+      next: async (res) => {
+        console.log(res);
+        this.sendDataService?.unsubscribe();
+      },
+      error: async (err) => {
+        console.log(err);
+        this.sendDataService?.unsubscribe();
+      }
+    });
+  }
+
+  async apiServiceMoreServices(data: any){
+    this.sendDataService = this.apiService.sendDataMoreServices(data).subscribe({
+      next: async (res) => {
+        console.log(res);
+        this.sendDataService?.unsubscribe();
+      },
+      error: async (err) => {
+        console.log(err);
+        this.sendDataService?.unsubscribe();
       }
     });
   }

@@ -20,4 +20,9 @@ export class ServicePage implements OnInit {
     this.ShowServicesComponent.getAllServices();
   }
 
+  getAllServices(event: any){
+    //console.log('father to child function action');
+    this.ShowServicesComponent.getAllServices();
+  }
+
 }

@@ -16,6 +16,7 @@ export class AddConsumptionComponent  implements OnInit {
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+    this.globalService.amount_services = 0;
   }
 
 }
