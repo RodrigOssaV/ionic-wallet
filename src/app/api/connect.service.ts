@@ -37,6 +37,17 @@ export class ConnectService {
     );
   }
 
+  sendDataOwnCheck(data: any): Observable<any> {
+    return this.http.post<any>(this.url + '/owncheck/add-owncheck', data).pipe(
+      catchError((error: any) => {
+        // Aquí puedes realizar el manejo del error
+        console.error('Ocurrió un error en la API:', error);
+        // Puedes relanzar el error si deseas que el componente consumidor lo maneje también
+        return throwError(() => error);
+      })
+    );
+  }
+
   sendDataCheck(data: any): Observable<any> {
     return this.http.post<any>(this.url + '/check/add-checks', data).pipe(
       catchError((error: any) => {

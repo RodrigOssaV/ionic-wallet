@@ -26,7 +26,7 @@ export class ShowPersonalchecksComponent  implements OnInit {
   }
 
   getAllOwnChecks(){
-
+    console.log('getAllOwnChecks');
     this.dataOwnChecks = this.apiService.getAllOwnChecks().subscribe({
       next: async (res) => {
         const response = await res;

@@ -15,6 +15,7 @@ export class GlobalService {
   sendDataServiceByName: Subscription | undefined;
   sendDataWallet: Subscription | undefined;
   sendDataService: Subscription | undefined;
+  sendDataOwncheck: Subscription | undefined;
 
   wallets: any[] = [];
   set_dataWallet: any;
@@ -27,9 +28,12 @@ export class GlobalService {
 
   ownchecks: any[] = [];
   array_ownchecks: any[] = [];
+  count_ownchecks: number = 0;
 
   array: any;
   array_services: any;
+
+  array_all_ownchecks: any;
 
   isModalItemOpen = false;
   isModalWalletOpen = false;
@@ -61,6 +65,30 @@ export class GlobalService {
       }
     });
 
+  }
+
+  async handleSendDataOwnChecks(data: any){
+    let owncheck = data;
+    let length = owncheck.length;
+    if(length === undefined || length === null){
+      //console.log('one');
+      length = 1;
+      this.array_all_ownchecks = {data, length};
+    } else {
+      //console.log('more than one: ', length);
+      this.array_all_ownchecks = {data, length};
+    }
+
+    this.sendDataOwncheck = this.apiService.sendDataOwnCheck(this.array_all_ownchecks).subscribe({
+      next: async (res) => {
+        console.log(res);
+        this.sendDataOwncheck?.unsubscribe();
+      },
+      error: async (err) => {
+        console.log(err);
+        this.sendDataOwncheck?.unsubscribe();
+      }
+    });
   }
 
   async handleSendDataCheck(data: any){
@@ -95,7 +123,7 @@ export class GlobalService {
 
   async handleSendDataServicesToBack(data: any){
     let services = data;
-    console.log(services);
+    //console.log(services);
     let length = services.length;
     if(length === undefined || length === null){
       //console.log('one');
@@ -144,7 +172,7 @@ export class GlobalService {
   async apiServiceOneService(data: any){
     this.sendDataService = this.apiService.sendDataOneService(data).subscribe({
       next: async (res) => {
-        console.log(res);
+        //console.log(res);
         this.sendDataService?.unsubscribe();
       },
       error: async (err) => {
@@ -157,7 +185,7 @@ export class GlobalService {
   async apiServiceMoreServices(data: any){
     this.sendDataService = this.apiService.sendDataMoreServices(data).subscribe({
       next: async (res) => {
-        console.log(res);
+        //console.log(res);
         this.sendDataService?.unsubscribe();
       },
       error: async (err) => {

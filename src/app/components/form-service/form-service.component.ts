@@ -12,7 +12,6 @@ export class FormServiceComponent  implements OnInit {
 
   @Output() fx_closeModal = new EventEmitter<any>();
   @Output() fx_getAll = new EventEmitter<any>();
-  //@Input() fx_getAll!: any;
 
   service: Service = new Service();
 
@@ -35,6 +34,7 @@ export class FormServiceComponent  implements OnInit {
   async handleBtnSubmitOneService(){
     //console.log(this.service);
     if(this.more_services.length >= 1){
+      console.log(`+ ${this.more_services.length}`);
       this.more_services.push(this.service);
       let length_more_checks = this.more_services.length;
       this.globalService.count_services = length_more_checks;
@@ -54,6 +54,7 @@ export class FormServiceComponent  implements OnInit {
 
       this.fx_closeModal.emit();
     }
+    this.fx_getAll.emit();
   }
 
   async handleBtnSubmitMoreServices(){

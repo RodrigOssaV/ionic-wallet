@@ -2,11 +2,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
-  selector: 'app-add-services',
-  templateUrl: './add-services.component.html',
-  styleUrls: ['./add-services.component.scss'],
+  selector: 'app-add-ownchecks',
+  templateUrl: './add-ownchecks.component.html',
+  styleUrls: ['./add-ownchecks.component.scss'],
 })
-export class AddServicesComponent  implements OnInit {
+export class AddOwnchecksComponent  implements OnInit {
 
   @Output() fx_getAllService = new EventEmitter<any>();
 
@@ -14,17 +14,16 @@ export class AddServicesComponent  implements OnInit {
 
   constructor(public globalService: GlobalService) { }
 
-  ngOnInit() {
-    //this.runToFunction();
-  }
+  ngOnInit() {}
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
-    this.globalService.count_services = 0;
+    this.globalService.count_ownchecks = 0;
   }
 
   async runToFunction(){
-    //console.log('this functions');
+    console.log('this functions');
     this.fx_getAllService.emit();
   }
+
 }

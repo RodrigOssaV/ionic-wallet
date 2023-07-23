@@ -16,8 +16,13 @@ export class PersonalCheckPage implements OnInit {
   }
 
   ionViewDidEnter(){
-    //console.log("ionViewDidEnter service.page");
+    console.log("ionViewDidEnter service.page");
     this.ShowPersonalChecksComponent.getAllOwnChecks();
+  }
+
+  async getAllServices(event: any){
+    console.log('father to child function action');
+    await this.ShowPersonalChecksComponent.getAllOwnChecks();
   }
 
 }

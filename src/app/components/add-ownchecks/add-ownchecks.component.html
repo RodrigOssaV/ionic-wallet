@@ -1,0 +1,21 @@
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button (click)="setOpen(true)">
+    <ion-icon name="person-add-sharp"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-item lines="none">
+          <ion-badge slot="end">{{globalService.count_ownchecks}}</ion-badge>
+          <ion-label>Cuentas</ion-label>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <app-form-owncheck (fx_closeModal)="setOpen(false)" (fx_getAllOwnChecks)="runToFunction()"></app-form-owncheck>
+    </ion-content>
+  </ng-template>
+</ion-modal>

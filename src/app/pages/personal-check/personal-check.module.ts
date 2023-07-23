@@ -8,6 +8,8 @@ import { PersonalCheckPageRoutingModule } from './personal-check-routing.module'
 
 import { PersonalCheckPage } from './personal-check.page';
 import { ShowPersonalchecksModule } from 'src/app/components/show-personalchecks/show-personalchecks.module';
+import { AddOwnchecksModule } from 'src/app/components/add-ownchecks/add-ownchecks.module';
+
 
 @NgModule({
   imports: [
@@ -15,7 +17,8 @@ import { ShowPersonalchecksModule } from 'src/app/components/show-personalchecks
     FormsModule,
     IonicModule,
     PersonalCheckPageRoutingModule,
-    ShowPersonalchecksModule
+    ShowPersonalchecksModule,
+    AddOwnchecksModule
   ],
   declarations: [PersonalCheckPage]
 })
