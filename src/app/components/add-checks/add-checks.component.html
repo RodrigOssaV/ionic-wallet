@@ -1,4 +1,9 @@
-<ion-button (click)="setOpen(true)">+ pago</ion-button>
+<!-- <ion-button (click)="setOpen(true)">+ pago</ion-button> -->
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button (click)="setOpen(true)">
+    <ion-icon name="bag-check-sharp"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
 <ion-modal [isOpen]="isModalOpen">
   <ng-template>

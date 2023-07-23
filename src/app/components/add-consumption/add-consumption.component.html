@@ -1,4 +1,9 @@
-<ion-button (click)="setOpen(true)">+ consumo</ion-button>
+<!-- <ion-button (click)="setOpen(true)">+ consumo</ion-button> -->
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button (click)="setOpen(true)">
+    <ion-icon name="bag-add-sharp"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
 <ion-modal [isOpen]="isModalOpen">
   <ng-template>

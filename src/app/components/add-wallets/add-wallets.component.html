@@ -16,7 +16,7 @@
     </ion-header>
     <ion-content class="ion-padding">
       <!-- <app-form-checks (fx_closeModal)="setOpen(false)"></app-form-checks> -->
-      <app-form-wallets (fx_closeModal)="setOpen(false)"></app-form-wallets>
+      <app-form-wallets (fx_closeModal)="setOpen(false)" (fx_getAllWallets)="runToFunction()"></app-form-wallets>
     </ion-content>
   </ng-template>
 </ion-modal>

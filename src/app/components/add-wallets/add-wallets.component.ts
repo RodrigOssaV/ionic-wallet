@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-wallets',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-wallets.component.scss'],
 })
 export class AddWalletsComponent  implements OnInit {
+
+  @Output() fx_getAllWallets = new EventEmitter<any>();
 
   isModalOpen = false; // set modal
 
@@ -15,6 +17,11 @@ export class AddWalletsComponent  implements OnInit {
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+  }
+
+  async runToFunction(){
+    //console.log('this functions');
+    this.fx_getAllWallets.emit();
   }
 
 }

@@ -46,7 +46,7 @@ export class ItemServiceComponent  implements OnInit {
   }
 
   async handleDataToChart(){
-    //console.log(this.rows);
+    console.log(this.rows);
     let rows_to_map = this.rows;
 
     rows_to_map.map((row: any) => {

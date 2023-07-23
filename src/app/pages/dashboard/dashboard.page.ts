@@ -20,4 +20,9 @@ export class DashboardPage implements OnInit {
     this.ShowWalletsComponent.getAllWallets();
   }
 
+  async getAllWallets(event: any){
+    console.log('father to child function action');
+    this.ShowWalletsComponent.getAllWallets();
+  }
+
 }

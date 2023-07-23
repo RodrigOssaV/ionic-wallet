@@ -7,4 +7,4 @@
 <ion-content [fullscreen]="true">
   <app-show-wallets></app-show-wallets>
 </ion-content>
-<app-add-wallets></app-add-wallets>
+<app-add-wallets (fx_getAllWallets)="getAllWallets($event)"></app-add-wallets>

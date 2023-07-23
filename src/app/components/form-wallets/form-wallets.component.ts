@@ -10,6 +10,7 @@ import { GlobalService } from 'src/app/services/global.service';
 export class FormWalletsComponent  implements OnInit {
 
   @Output() fx_closeModal = new EventEmitter<any>();
+  @Output() fx_getAllWallets = new EventEmitter<any>();
 
   wallet: Wallet = new Wallet();
 
@@ -51,6 +52,7 @@ export class FormWalletsComponent  implements OnInit {
     //console.log(this.wallet);
     let wallet = this.wallet;
     await this.globalService.handleSendDataWallet(wallet);
+    this.fx_getAllWallets.emit();
     this.fx_closeModal.emit();
   }
 
