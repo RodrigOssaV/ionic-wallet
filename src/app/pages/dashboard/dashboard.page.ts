@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ShowWalletsComponent } from 'src/app/components/show-wallets/show-wallets.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPage implements OnInit {
 
+  @ViewChild(ShowWalletsComponent) ShowWalletsComponent!: any;
+
   constructor() { }
 
   ngOnInit() {
@@ -14,6 +17,7 @@ export class DashboardPage implements OnInit {
 
   ionViewDidEnter(){
     //console.log("ionViewDidEnter")
+    this.ShowWalletsComponent.getAllWallets();
   }
 
 }

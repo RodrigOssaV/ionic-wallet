@@ -57,4 +57,26 @@ export class ConnectService {
       })
     );
   }
+
+  sendDataWallet(data: any): Observable<any> {
+    return this.http.post<any>(this.url + '/wallet/add-wallet', data).pipe(
+      catchError((error: any) => {
+        // Aquí puedes realizar el manejo del error
+        console.error('Ocurrió un error en la API:', error);
+        // Puedes relanzar el error si deseas que el componente consumidor lo maneje también
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getAllWallets(): Observable<any> {
+    return this.http.get<any>(this.url + '/wallet/get-wallets').pipe(
+      catchError((error: any) => {
+        // Aquí puedes realizar el manejo del error
+        console.error('Ocurrió un error en la API:', error);
+        // Puedes relanzar el error si deseas que el componente consumidor lo maneje también
+        return throwError(() => error);
+      })
+    );
+  }
 }

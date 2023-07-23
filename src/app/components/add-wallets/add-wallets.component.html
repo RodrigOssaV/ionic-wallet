@@ -1,0 +1,22 @@
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button (click)="setOpen(true)">
+    <ion-icon name="wallet-sharp"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-item lines="none">
+          <!-- <ion-badge slot="end">{{globalService.amount_services}}</ion-badge> -->
+          <ion-label>Billetera</ion-label>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <!-- <app-form-checks (fx_closeModal)="setOpen(false)"></app-form-checks> -->
+      <app-form-wallets (fx_closeModal)="setOpen(false)"></app-form-wallets>
+    </ion-content>
+  </ng-template>
+</ion-modal>

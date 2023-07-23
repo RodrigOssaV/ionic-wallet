@@ -1,0 +1,22 @@
+<ion-item class="input-form-check">
+  <ion-select label="Mes" label-placement="floating" (ionChange)="handleSelectMonth($event)" value="{{wallet.wallet_amount}}">
+    <ion-select-option *ngFor="let month of all_months" [value]="month.name">{{ month.name }}</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-item class="input-form-check">
+  <ion-input label="Valor" labelPlacement="floating" (input)="handleInputCLP($event)" value="{{show_value}}"></ion-input>
+</ion-item>
+
+<ion-grid>
+  <ion-row>
+    <ion-col size="12" class="ion-no-padding">
+      <ion-button color="success" expand="block" (click)="handleBtnSubmitOneService()">Agregar</ion-button>
+    </ion-col>
+    <!-- <ion-col size="4" class="ion-no-padding">
+      <ion-button color="tertiary" expand="block">Otro</ion-button>
+    </ion-col> -->
+    <ion-col size="12" class="ion-no-padding">
+      <ion-button color="danger" expand="block" (click)="handleCloseModal()">Cerrar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

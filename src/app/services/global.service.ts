@@ -13,6 +13,10 @@ export class GlobalService {
 
   sendDataCheck: Subscription | undefined;
   sendDataServiceByName: Subscription | undefined;
+  sendDataWallet: Subscription | undefined;
+
+  wallets: any[] = [];
+  set_dataWallet: any;
 
   services: any[] = [];
   array_service: any[] = [];
@@ -24,6 +28,7 @@ export class GlobalService {
   array: any;
 
   isModalItemOpen = false;
+  isModalWalletOpen = false;
   data_Servicesmonthly: any;
 
   show_nameModal: string = '';
@@ -36,6 +41,22 @@ export class GlobalService {
   async cleanArrays(){
     this.services = [];
     this.array_service = [];
+  }
+
+  async handleSendDataWallet(data: any){
+    console.log(data);
+
+    this.sendDataWallet = this.apiService.sendDataWallet(data).subscribe({
+      next: async (res) => {
+        console.log(res);
+        this.sendDataWallet?.unsubscribe();
+      },
+      error: async (err) => {
+        console.log(err);
+        this.sendDataWallet?.unsubscribe();
+      }
+    });
+
   }
 
   async handleSendDataCheck(data: any){
@@ -70,6 +91,10 @@ export class GlobalService {
 
   setOpenModalItem(isOpen: boolean){
     this.isModalItemOpen = isOpen;
+  }
+
+  setOpenModalWallet(isOpen: boolean){
+    this.isModalWalletOpen = isOpen;
   }
 
   async handleSendDataService(data: any) {

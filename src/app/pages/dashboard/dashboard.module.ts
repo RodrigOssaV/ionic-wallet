@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
+import { AddWalletsModule } from 'src/app/components/add-wallets/add-wallets.module';
+import { ShowWalletsModule } from 'src/app/components/show-wallets/show-wallets.module';
 
 @NgModule({
   imports: [
@@ -14,6 +16,8 @@ import { DashboardPage } from './dashboard.page';
     FormsModule,
     IonicModule,
     DashboardPageRoutingModule,
+    AddWalletsModule,
+    ShowWalletsModule
   ],
   declarations: [DashboardPage]
 })
