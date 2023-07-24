@@ -17,6 +17,12 @@
 </ion-item>
 
 <ion-item class="input-form-check">
+  <ion-select label="Billetera" label-placement="floating" (ionChange)="handleSelectedWallet($event)" value="{{show_name_month}}">
+    <ion-select-option *ngFor="let wallet of all_wallets" [value]="wallet.wallet_name">{{ wallet.wallet_name }}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item class="input-form-check">
   <ion-input label="Valor" labelPlacement="floating" (input)="handleInputCLP($event)" value="{{show_value}}"></ion-input>
 </ion-item>
 

@@ -20,8 +20,11 @@ export class FormConsumptionComponent  implements OnInit {
 
   all_ownchecks: any;
 
+  all_wallets: any;
+
   show_value: any;
   valor: number = 0;
+  show_name_month: any;
 
   block_selectService: boolean = false;
   block_selectOwnCheck: boolean = false;
@@ -36,6 +39,8 @@ export class FormConsumptionComponent  implements OnInit {
     //console.log(this.all_services);
     //console.log(this.globalService.array_ownchecks);
     this.all_ownchecks = this.globalService.array_ownchecks;
+    this.all_wallets = this.globalService.wallets;
+    console.log(this.all_wallets);
   }
 
   handleInputCLP(event: any) {
@@ -64,6 +69,11 @@ export class FormConsumptionComponent  implements OnInit {
     let service_ = event.detail.value;
     //console.log(service_);
     let service_name = service_;
+    //console.log(service_name);
+    let query = this.all_services.find((i: any) => i.service_name === service_name);
+    //console.log(query);
+    this.check.id_service = query.service_id;
+    this.check.id_owncheck = null;
     this.check.check_service = service_name;
     this.block_selectOwnCheck = true;
   }
@@ -71,6 +81,10 @@ export class FormConsumptionComponent  implements OnInit {
   handleSelectOwnCheck(event: any){
     let owncheck_ = event.detail.value;
     //console.log(owncheck_);
+    let query = this.all_ownchecks.find((i: any) => i.owncheck_name === owncheck_);
+    console.log(query);
+    this.check.id_owncheck = query.id_owncheck;
+    this.check.id_service = null;
     this.check.check_owncheck = owncheck_;
     this.block_selectService = true;
   }
@@ -83,7 +97,10 @@ export class FormConsumptionComponent  implements OnInit {
         check_month: this.check.check_month,
         check_service: this.check.check_service,
         check_owncheck: this.check.check_owncheck,
-        check_value: this.check.check_value
+        check_value: this.check.check_value,
+        id_wallet: this.check.id_wallet,
+        id_service: this.check.id_service,
+        id_owncheck: this.check.id_owncheck
       });
       //console.log('length_more_checks: ', this.more_checks.length);
       let length_more_checks = this.more_checks.length;
@@ -102,6 +119,7 @@ export class FormConsumptionComponent  implements OnInit {
       await this.cleanInputs();
       this.fx_closeModal.emit();
     }
+    //console.log(this.check);
   }
 
   async handleBtnSubmitMoreServices(){
@@ -112,7 +130,10 @@ export class FormConsumptionComponent  implements OnInit {
       check_month: this.check.check_month,
       check_service: this.check.check_service,
       check_owncheck: this.check.check_owncheck,
-      check_value: this.check.check_value
+      check_value: this.check.check_value,
+      id_wallet: this.check.id_wallet,
+      id_service: this.check.id_service,
+      id_owncheck: this.check.id_owncheck
     });
     //console.log('length_more_checks: ', this.more_checks.length);
     let length_more_checks = this.more_checks.length;
@@ -151,13 +172,24 @@ export class FormConsumptionComponent  implements OnInit {
   }
 
   async cleanInputs(){
-    this.check.check_month = '';
-    this.check.check_service = '';
-    this.check.check_owncheck = '';
+    //this.check.check_month = '';
+    //this.check.check_service = '';
+    //this.check.check_owncheck = '';
+    this.check = new Check();
     this.show_value = '';
+    this.show_name_month = '';
 
     this.block_selectOwnCheck = false;
     this.block_selectService = false;
+  }
+
+  async handleSelectedWallet(event: any) {
+    let wallet = event.detail.value;
+    //console.log(wallet);
+    let query = this.all_wallets.find((i: any) => i.wallet_name === wallet);
+    //console.log(query);
+    this.check.id_wallet = query.id;
+    this.show_name_month = query.wallet_name;
   }
 
 

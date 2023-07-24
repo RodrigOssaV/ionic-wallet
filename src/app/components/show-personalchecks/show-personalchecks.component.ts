@@ -32,7 +32,7 @@ export class ShowPersonalchecksComponent  implements OnInit {
         const response = await res;
         //console.log(response);
         this.globalService.ownchecks = response.data;
-        //console.log('ownchecks: ', response.data);
+        console.log('ownchecks: ', response.data);
         await this.handleDataToShowUser(response.data);
         this.dataOwnChecks?.unsubscribe();
       },
@@ -55,6 +55,7 @@ export class ShowPersonalchecksComponent  implements OnInit {
       let createdAt = new Date(item.createdAt).toLocaleDateString('Es-es');
       this.showPersonalChecks.owncheck_name = item.owncheck_name;
       this.showPersonalChecks.data_createdAt = createdAt;
+      this.showPersonalChecks.id_owncheck = item.id;
       this.array_personalChecks.push(this.showPersonalChecks);
       //console.log(this.array_personalChecks);
     })
