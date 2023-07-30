@@ -2,6 +2,7 @@ export class Wallet {
 
   wallet_name: string = '';
   wallet_amount: number = 0;
+  //id_wallet: number = 0;
 
   constructor(){}
 };

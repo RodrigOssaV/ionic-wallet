@@ -71,7 +71,7 @@ export class FormConsumptionComponent  implements OnInit {
     let service_name = service_;
     //console.log(service_name);
     let query = this.all_services.find((i: any) => i.service_name === service_name);
-    //console.log(query);
+    console.log(query);
     this.check.id_service = query.service_id;
     this.check.id_owncheck = null;
     this.check.check_service = service_name;
@@ -98,20 +98,20 @@ export class FormConsumptionComponent  implements OnInit {
         check_service: this.check.check_service,
         check_owncheck: this.check.check_owncheck,
         check_value: this.check.check_value,
-        id_wallet: this.check.id_wallet,
+        //id_wallet: this.check.id_wallet,
         id_service: this.check.id_service,
         id_owncheck: this.check.id_owncheck
       });
       //console.log('length_more_checks: ', this.more_checks.length);
       let length_more_checks = this.more_checks.length;
       this.globalService.amount_services = length_more_checks;
-      //console.log('more_checks: ', this.more_checks);
+      console.log('more_checks: ', this.more_checks);
       this.globalService.amount_services = 0;
       await this.globalService.handleSendDataCheck(this.more_checks);
       await this.cleanInputs();
       this.fx_closeModal.emit();
     } else {
-      //console.log('check: ', this.check);
+      console.log('check: ', this.check);
 
       this.more_checks = [];
       this.globalService.amount_services = 0;
@@ -131,7 +131,7 @@ export class FormConsumptionComponent  implements OnInit {
       check_service: this.check.check_service,
       check_owncheck: this.check.check_owncheck,
       check_value: this.check.check_value,
-      id_wallet: this.check.id_wallet,
+      //id_wallet: this.check.id_wallet,
       id_service: this.check.id_service,
       id_owncheck: this.check.id_owncheck
     });
@@ -187,8 +187,8 @@ export class FormConsumptionComponent  implements OnInit {
     let wallet = event.detail.value;
     //console.log(wallet);
     let query = this.all_wallets.find((i: any) => i.wallet_name === wallet);
-    //console.log(query);
-    this.check.id_wallet = query.id;
+    console.log(query);
+    //this.check.id_wallet = query.id_wallet;
     this.show_name_month = query.wallet_name;
   }
 

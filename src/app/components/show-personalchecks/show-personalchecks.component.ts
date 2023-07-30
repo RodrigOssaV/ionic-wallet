@@ -50,12 +50,12 @@ export class ShowPersonalchecksComponent  implements OnInit {
     this.array_personalChecks = [];
 
     array.map((item: any) => {
-      //console.log(item);
+      console.log(item);
       this.showPersonalChecks = new ShowPersonalChecks();
       let createdAt = new Date(item.createdAt).toLocaleDateString('Es-es');
       this.showPersonalChecks.owncheck_name = item.owncheck_name;
       this.showPersonalChecks.data_createdAt = createdAt;
-      this.showPersonalChecks.id_owncheck = item.id;
+      this.showPersonalChecks.id_owncheck = item.id_owncheck;
       this.array_personalChecks.push(this.showPersonalChecks);
       //console.log(this.array_personalChecks);
     })

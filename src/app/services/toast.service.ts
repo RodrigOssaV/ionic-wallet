@@ -10,9 +10,10 @@ export class ToastService {
 
   constructor(private toastController: ToastController) { }
 
-  async showToastSuccess(){
+  async showToastSuccess(message: string){
     this.toast = await this.toastController.create({
-      message: 'Operación completada',
+      message,
+      header: 'Operación completada',
       duration: 1500,
       position: 'top',
       icon: 'thumbs-up-sharp'

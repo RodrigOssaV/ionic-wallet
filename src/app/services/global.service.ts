@@ -41,9 +41,11 @@ export class GlobalService {
 
   show_nameModal: string = '';
 
+  todos_consumos: any[] = [];
+
   constructor(
     private apiService: ConnectService,
-    private toastController: ToastService
+    private toastController: ToastService,
   ) { }
 
   async cleanArrays(){
@@ -56,7 +58,8 @@ export class GlobalService {
 
     this.sendDataWallet = this.apiService.sendDataWallet(data).subscribe({
       next: async (res) => {
-        console.log(res);
+        //console.log(res);
+        await this.toastController.showToastSuccess('Ha cargado su billetera.');
         this.sendDataWallet?.unsubscribe();
       },
       error: async (err) => {
@@ -79,7 +82,7 @@ export class GlobalService {
       this.array_all_ownchecks = {data, length};
     }
 
-    this.sendDataOwncheck = this.apiService.sendDataOwnCheck(this.array_all_ownchecks).subscribe({
+    /* this.sendDataOwncheck = this.apiService.sendDataOwnCheck(this.array_all_ownchecks).subscribe({
       next: async (res) => {
         console.log(res);
         this.sendDataOwncheck?.unsubscribe();
@@ -88,7 +91,7 @@ export class GlobalService {
         console.log(err);
         this.sendDataOwncheck?.unsubscribe();
       }
-    });
+    }); */
   }
 
   async handleSendDataCheck(data: any){
@@ -106,12 +109,20 @@ export class GlobalService {
       this.array = {data,length};
     }
 
-    //console.log(this.array);
+    console.log(this.array);
 
     this.sendDataCheck = this.apiService.sendDataCheck(this.array).subscribe({
       next: async (resp) => {
         //console.log(resp);
-        this.toastController.showToastSuccess();
+        const response = await resp;
+
+        let message = response.message;
+
+        if (message === 'upload data') {
+          this.toastController.showToastSuccess('Consumo agregado.');
+        } else if (message === 'upload array data') {
+          this.toastController.showToastSuccess('Consumos agregados.');
+        }
         this.sendDataCheck?.unsubscribe();
       },
       error: async (err) => {
@@ -122,16 +133,18 @@ export class GlobalService {
   }
 
   async handleSendDataServicesToBack(data: any){
-    let services = data;
-    //console.log(services);
-    let length = services.length;
+    let services_to_front = data;
+    console.log(services_to_front);
+    let length = services_to_front.length;
     if(length === undefined || length === null){
-      //console.log('one');
+      console.log('one');
       //this.array_services = [data];
-      await this.apiServiceOneService(services);
+      //console.log(this.array_services);
+      await this.apiServiceOneService(data);
     } else {
-      //console.log('more than one: ', length);
-      this.array_services = {data};
+      console.log('more than one: ', length);
+      //this.array_services = {data};
+      //console.log(this.array_services);
       await this.apiServiceMoreServices(data);
     }
     //console.log(this.array_services);
@@ -150,7 +163,7 @@ export class GlobalService {
     let to_search_name = data.service_name;
     this.show_nameModal = to_search_name;
     //console.log(to_search_name);
-    let query= {
+    let query = {
       to_search_name
     }
     //console.log(query);
@@ -170,9 +183,11 @@ export class GlobalService {
   }
 
   async apiServiceOneService(data: any){
+    console.log('apiServiceOneService: ', data);
     this.sendDataService = this.apiService.sendDataOneService(data).subscribe({
       next: async (res) => {
         //console.log(res);
+        this.toastController.showToastSuccess('Servicio básico agregado.');
         this.sendDataService?.unsubscribe();
       },
       error: async (err) => {
@@ -183,9 +198,11 @@ export class GlobalService {
   }
 
   async apiServiceMoreServices(data: any){
+    console.log('apiServiceMoreServices: ', data);
     this.sendDataService = this.apiService.sendDataMoreServices(data).subscribe({
       next: async (res) => {
         //console.log(res);
+        this.toastController.showToastSuccess('Servicios básicos agregados.');
         this.sendDataService?.unsubscribe();
       },
       error: async (err) => {

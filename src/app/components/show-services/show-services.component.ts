@@ -63,28 +63,28 @@ export class ShowServicesComponent  implements OnInit {
       let type = service.service_type;
 
       if(type === 'internet'){
-        this.showService.service_id = service.id;
+        this.showService.service_id = service.id_service;
         this.showService.service_name = service.service_name;
         this.showService.service_nro_client = service.service_nro_client;
         this.showService.service_type = service.service_type;
         this.showService.service_color = 'light';
         this.globalService.services.push(this.showService);
       } else if (type === 'luz'){
-        this.showService.service_id = service.id;
+        this.showService.service_id = service.id_service;
         this.showService.service_name = service.service_name;
         this.showService.service_nro_client = service.service_nro_client;
         this.showService.service_type = service.service_type;
         this.showService.service_color = 'warning';
         this.globalService.services.push(this.showService);
       } else if (type === 'agua'){
-        this.showService.service_id = service.id;
+        this.showService.service_id = service.id_service;
         this.showService.service_name = service.service_name;
         this.showService.service_nro_client = service.service_nro_client;
         this.showService.service_type = service.service_type;
         this.showService.service_color = 'primary';
         this.globalService.services.push(this.showService);
       } else if(type === 'gas'){
-        this.showService.service_id = service.id;
+        this.showService.service_id = service.id_service;
         this.showService.service_name = service.service_name;
         this.showService.service_nro_client = service.service_nro_client;
         this.showService.service_type = service.service_type;

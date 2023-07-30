@@ -8,6 +8,7 @@ import { CheckPageRoutingModule } from './check-routing.module';
 
 import { CheckPage } from './check.page';
 import { AddChecksModule } from 'src/app/components/add-checks/add-checks.module';
+import { ShowPaymentsModule } from 'src/app/components/show-payments/show-payments.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AddChecksModule } from 'src/app/components/add-checks/add-checks.module
     FormsModule,
     IonicModule,
     CheckPageRoutingModule,
-    AddChecksModule
+    AddChecksModule,
+    ShowPaymentsModule
   ],
   declarations: [CheckPage]
 })

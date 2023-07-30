@@ -8,6 +8,8 @@ import { ConsumptionPageRoutingModule } from './consumption-routing.module';
 
 import { ConsumptionPage } from './consumption.page';
 import { AddConsumptionModule } from 'src/app/components/add-consumption/add-consumption.module';
+import { ShowConsumptionsModule } from 'src/app/components/show-consumptions/show-consumptions.module';
+//import { ShowPaymentsModule } from 'src/app/components/show-payments/show-payments.module';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { AddConsumptionModule } from 'src/app/components/add-consumption/add-con
     FormsModule,
     IonicModule,
     ConsumptionPageRoutingModule,
-    AddConsumptionModule
+    AddConsumptionModule,
+    ShowConsumptionsModule
+    //ShowPaymentsModule
   ],
   declarations: [ConsumptionPage]
 })

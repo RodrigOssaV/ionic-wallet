@@ -1,6 +1,6 @@
 <ion-item class="input-form-check">
-  <ion-select label="Mes" label-placement="floating" (ionChange)="handleSelectMonth($event)" value="{{wallet.wallet_amount}}">
-    <ion-select-option *ngFor="let month of all_months" [value]="month.name">{{ month.name }}</ion-select-option>
+  <ion-select label="Mes" label-placement="floating" (ionChange)="handleSelectMonth($event)">
+    <ion-select-option *ngFor="let month of all_months" [value]="month">{{ month.name }}</ion-select-option>
   </ion-select>
 </ion-item>
 <ion-item class="input-form-check">

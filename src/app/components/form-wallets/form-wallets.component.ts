@@ -41,7 +41,10 @@ export class FormWalletsComponent  implements OnInit {
 
   handleSelectMonth(event: any){
     let month = event.detail.value;
-    this.month_name = month;
+    let id = month.id;
+    let name = month.name;
+    this.month_name = name;
+    //this.wallet.id_wallet = id;
   }
 
   async handleBtnSubmitOneService(){
@@ -51,9 +54,11 @@ export class FormWalletsComponent  implements OnInit {
     this.wallet.wallet_name = this.month_name + '-' + date;
     //console.log(this.wallet);
     let wallet = this.wallet;
+    console.log(wallet);
     await this.globalService.handleSendDataWallet(wallet);
     this.fx_getAllWallets.emit();
     this.fx_closeModal.emit();
+    this.wallet = new Wallet();
   }
 
   async handleCloseModal(){

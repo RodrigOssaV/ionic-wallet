@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ShowConsumptionsComponent } from 'src/app/components/show-consumptions/show-consumptions.component';
 
 @Component({
   selector: 'app-consumption',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsumptionPage implements OnInit {
 
+  @ViewChild(ShowConsumptionsComponent) ShowConsumptionsComponent!: any;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter(){
+    this.ShowConsumptionsComponent.getAllConsumptions();
   }
 
 }

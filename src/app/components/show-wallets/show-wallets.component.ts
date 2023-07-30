@@ -28,7 +28,7 @@ export class ShowWalletsComponent  implements OnInit {
     this.dataService = this.apiService.getAllWallets().subscribe({
       next: async (res) => {
         const response = await res;
-        //console.log(res);
+        console.log(res);
         this.globalService.wallets = response.data;
         this.dataService?.unsubscribe();
       },

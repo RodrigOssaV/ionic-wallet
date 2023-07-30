@@ -15,13 +15,14 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewDidEnter(){
-    //console.log("ionViewDidEnter")
+  async ionViewDidEnter(){
+    console.log("ionViewDidEnter")
     this.ShowWalletsComponent.getAllWallets();
   }
 
   async getAllWallets(event: any){
-    console.log('father to child function action');
+    //console.log('father to child function action');
+    await this.ionViewDidEnter();
     this.ShowWalletsComponent.getAllWallets();
   }
 

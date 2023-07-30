@@ -113,4 +113,26 @@ export class ConnectService {
       })
     );
   }
+
+  getAllDataPayments(): Observable<any> {
+    return this.http.get<any>(this.url + '/payment/get-all-payments').pipe(
+      catchError((error: any) => {
+        // Aquí puedes realizar el manejo del error
+        console.error('Ocurrió un error en la API:', error);
+        // Puedes relanzar el error si deseas que el componente consumidor lo maneje también
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getAllChecks(): Observable<any> {
+    return this.http.get<any>(this.url + '/check/get-all-checks').pipe(
+      catchError((error: any) => {
+        // Aquí puedes realizar el manejo del error
+        console.error('Ocurrió un error en la API:', error);
+        // Puedes relanzar el error si deseas que el componente consumidor lo maneje también
+        return throwError(() => error);
+      })
+    );
+  }
 }

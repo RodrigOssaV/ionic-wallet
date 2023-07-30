@@ -19,7 +19,7 @@ export class Check {
   check_service: string = '';
   check_owncheck: string = '';
   check_value: number = 0;
-  id_wallet: number = 0;
+  //id_wallet: number = 0;
   id_service: any;
   id_owncheck: any;
 
